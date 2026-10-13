@@ -1,0 +1,740 @@
+/* Cairo Jazz quest: additions on top of the Questita quest-v2 styles. */
+
+.jq-lead{margin-top:.5rem;font-size:1rem;font-weight:600;line-height:1.35;color:var(--body)}
+
+/* On screen: 12 episodes */
+.jq-onscreen{display:grid;gap:16px;margin-top:18px}
+@media (min-width:768px){.jq-onscreen{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:start}}
+.jq-eps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;list-style:none;margin:0;padding:0}
+.jq-ep{position:relative;width:100%;min-width:0;padding:4px}
+.jq-ep-n{font-size:calc(var(--pxu) * 1.6);color:var(--merlot);letter-spacing:.04em}
+.jq-ep.is-hero{background:var(--blue)}
+.jq-ep.is-hero.is-selected{background:var(--yellow)}
+.jq-ep-star{position:absolute;top:3px;right:3px;width:14px;height:14px}
+.jq-insp{min-height:112px}
+
+/* Two ways to play */
+.jq-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.jq-tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:12px 8px;min-width:0}
+.jq-tab-k{color:var(--body);font-size:var(--pxu)}
+.jq-tab-name{font-weight:800;color:var(--merlot);line-height:1.15;font-size:.9375rem}
+.jq-tab-price{font-weight:700;color:var(--body);font-size:.875rem}
+.jq-tab.is-picked{background:var(--yellow)}
+.jq-tabs+.jq-insp{margin-top:16px}
+
+.jq-list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.jq-list li{position:relative;padding-left:20px;font-weight:600;line-height:1.35;font-size:.9375rem}
+.jq-list li:before{content:"";position:absolute;left:0;top:.42em;width:8px;height:8px;background:var(--yellow)}
+.jq-list-sm li{font-size:.875rem}
+.jq-more{margin-top:14px;display:inline-block;background:var(--yellow);color:var(--merlot);padding:10px 14px;min-height:44px;cursor:pointer;border:0}
+
+.jq-panel{margin-top:16px;background:var(--merlot);color:var(--coconut);padding:20px 18px}
+@media (min-width:768px){.jq-panel{padding:28px 30px}}
+.jq-panel-k{color:var(--yellow)}
+.jq-panel-name{margin-top:8px;font-size:1.5rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.jq-panel-price{margin-top:8px;font-size:1.75rem;font-weight:800;color:var(--yellow);display:flex;flex-direction:column;gap:2px;line-height:1.1}
+.jq-panel-price span{font-size:.9375rem;font-weight:600;color:var(--coconut-78)}
+.jq-panel-h{margin-top:20px;color:var(--yellow)}
+.jq-panel .jq-list{max-width:62ch}
+.jq-pay{margin-top:20px;border-top:2px solid rgba(249,245,233,.25);padding-top:2px}
+.jq-pay p:last-child{margin-top:6px;font-weight:700;line-height:1.35}
+.jq-foot{margin-top:18px;max-width:62ch;font-size:.9375rem;font-weight:600;color:var(--body);line-height:1.45}
+
+/* Member perk: second fox walks in, product drops into the backpack */
+.jq-perk{margin-top:12px;border-top:3px solid var(--merlot);padding-top:12px}
+.jq-stage{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;overflow-x:clip}
+.jq-fox2{position:relative;width:64px;flex:none;animation:jq-walk .9s steps(6) both}
+/* BASELINE fix 17: .jq-tint (hue-rotate) removed; see .jq-badge below */
+.jq-tag{display:block;width:max-content;margin:-2px auto 0;padding:2px 5px;background:var(--coconut);border:2px solid var(--merlot);color:var(--merlot);font-size:7px;letter-spacing:.1em}
+.jq-bag{flex:1;min-width:0;background:var(--merlot);padding:6px 8px 8px;text-align:center}
+.jq-bag-k{display:block;margin-bottom:6px;color:var(--yellow);font-size:8px;letter-spacing:.2em}
+.jq-slots{display:flex;justify-content:center;gap:6px}
+.jq-slot{width:40px;height:40px;padding:3px;background:var(--coconut);border:2px solid var(--yellow);display:block;overflow:visible}
+.jq-item{display:block;width:100%;height:100%;animation:jq-drop .5s steps(5) both}
+.jq-fox-line{margin-top:10px;font-size:.875rem;font-weight:600;line-height:1.35;color:var(--merlot)}
+.jq-perk-k{margin-top:10px;display:inline-block;padding:3px 8px;background:var(--yellow);color:var(--merlot);animation:jq-pop .3s steps(3) 1.1s both}
+.jq-perk-copy{margin-top:6px;font-size:.875rem;font-weight:700;line-height:1.35;color:var(--merlot);animation:jq-pop .3s steps(3) 1.2s both}
+@keyframes jq-walk{from{transform:translateX(-160%)}to{transform:none}}
+@keyframes jq-drop{from{transform:translateY(-40px);opacity:0}50%{opacity:1}to{transform:none;opacity:1}}
+@keyframes jq-pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.jq-fox2,.jq-item,.jq-perk-k,.jq-perk-copy{animation:none}}
+
+/* Save point */
+.jq-contact{display:flex;flex-direction:column;align-items:flex-start;gap:18px;max-width:100%}
+.jq-contact .btn{max-width:100%;text-align:center}
+@media (max-width:480px){.jq-contact{width:100%}.jq-contact .btn{width:100%}}
+.jq-lines{display:flex;flex-direction:column;gap:6px;font-size:1.0625rem;font-weight:700}
+.jq-lines a{text-decoration:underline;text-underline-offset:3px;word-break:break-word}
+.jq-sign{display:flex;flex-direction:column;gap:2px;font-size:1rem;font-weight:600}
+.jq-sign strong{font-size:1.125rem;font-weight:800}
+
+/* Cairo Jazz additions */
+.q2-marker>span.jq-bldg{position:absolute;left:50%;top:calc(100% + 2px);transform:translateX(-50%);width:max-content;height:auto;display:block;padding:4px 7px;background:var(--merlot);color:var(--coconut);outline:0;font-size:8px;letter-spacing:.14em;line-height:1.2}
+.jq-scene{display:block;width:100%;height:auto;margin-top:14px;background:var(--night)}
+.jq-count{margin-top:12px;color:var(--merlot)}
+.jq-song{display:block;width:100%;margin-top:12px;min-height:56px;padding:14px 18px;background:var(--merlot);color:var(--yellow);font-size:calc(var(--pxu) * 1.8);letter-spacing:.14em;cursor:pointer;border:0;transition:transform .12s}
+.jq-song:active{transform:translateY(2px)}
+.jq-song:disabled{background:var(--merlot-700);color:var(--coconut-78);cursor:default}
+.jq-payoff{margin-top:10px;font-size:1rem;font-weight:700;line-height:1.35;color:var(--merlot);min-height:1px}
+.jq-small{margin-top:10px;font-size:.8125rem;font-weight:600;line-height:1.35;color:var(--body)}
+.jq-asks{display:grid;gap:10px;margin-top:16px}
+.jq-ask{padding:12px 14px;text-align:left;font-weight:800;color:var(--merlot);font-size:1rem}
+.jq-ask.is-picked{background:var(--yellow)}
+.jq-sign-in{display:block}
+.jq-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.jq-card{padding:10px 8px;background:var(--coconut);border:3px solid var(--merlot);color:var(--merlot);font-weight:800;font-size:.875rem;line-height:1.2;text-align:center;cursor:pointer;min-height:56px}
+.jq-card.is-picked{background:var(--yellow);box-shadow:0 0 0 3px var(--yellow),0 0 0 6px var(--merlot)}
+.jq-card-d{margin-top:14px;font-size:.9375rem;font-weight:600;line-height:1.4;color:var(--body)}
+.jq-band{background:var(--yellow)}
+.jq-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.jq-act{min-height:48px;padding:8px;background:var(--merlot);color:var(--coconut);border:0;cursor:pointer;font-size:var(--pxu)}
+.jq-act.is-picked{background:var(--yellow);color:var(--merlot);outline:3px solid var(--merlot)}
+.jq-ticket{margin-top:10px}
+.jq-xp{display:inline-block;padding:3px 8px;background:var(--yellow);color:var(--merlot)}
+.jq-ex{margin-top:6px;font-size:.75rem;font-weight:700;color:var(--body);font-style:italic}
+.jq-sched{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.jq-sched li{padding:8px 10px;background:var(--coconut);border:2px solid var(--merlot);font-weight:700;font-size:.875rem;color:var(--merlot)}
+.jq-sched li.is-soon{background:var(--blue)}
+.jq-num{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.jq-copy{padding:6px 10px;background:var(--merlot);color:var(--coconut);border:0;cursor:pointer;min-height:36px}
+.jq-sign span{font-weight:600}
+.jq-free{margin-top:10px;color:var(--body);font-size:calc(var(--pxu) * .9)}
+.jq-notes{position:relative;height:0}
+.jq-note{position:absolute;bottom:4px;font-size:1.25rem;font-weight:800;color:var(--yellow);animation:jq-float 1.1s steps(8) both;pointer-events:none;text-shadow:2px 2px 0 var(--merlot)}
+@keyframes jq-float{from{transform:translateY(0);opacity:1}to{transform:translateY(-90px);opacity:0}}
+@media (prefers-reduced-motion:reduce){.jq-note{animation:none;opacity:0}}
+.jq-tag-ep{display:inline-block;margin-top:10px;padding:4px 8px;background:var(--yellow);color:var(--merlot)}
+.jq-asks{grid-template-columns:1fr 1fr}
+.jq-stmt{margin-top:10px;padding-top:8px;border-top:2px solid rgba(249,245,233,.3);font-size:.875rem;font-weight:700;line-height:1.35;color:var(--yellow)}
+
+/* ==========================================================================
+   BASELINE (cairo-jazz-quest-base) additions. Fix numbers refer to the approved list.
+   ========================================================================== */
+
+/* 14l: the night tone that .jq-scene and the canvas expect */
+:root{--night:#3b111b}
+
+/* 14e: legibility. Pixel font only at 16px+, tighter tracking on small pixel labels; Manrope body copy 15px+ (16px on phones) */
+.t-px1,.jq-px16{font-size:max(16px,var(--pxu));letter-spacing:.12em}
+.q2-ctl{font-size:16px;letter-spacing:.1em}
+#plain-stops .q2-plain-h{font-size:max(16px,var(--pxu));letter-spacing:.14em}
+.jq-bag-k{font-family:var(--font-sans);text-transform:uppercase;font-weight:800;font-size:12px;letter-spacing:.08em}
+.jq-card,.jq-fox-line,.jq-perk-copy,.jq-sched li,.jq-pop-status{font-size:.9375rem}
+@media (max-width:767px){
+  .jq-card-d,.jq-fox-line,.jq-perk-copy,.jq-sched li,.jq-pop-status,.jq-lines,.jq-unlock,
+  .q2-popup .text-\[0\.9375rem\],.q2-dialog-in p.mt-1\.5{font-size:1rem}
+}
+
+/* 13: WhatsApp pill (header). Standard WhatsApp green + white glyph/text.
+   NOTE: white on #25D366 is ~2:1 contrast; kept because the brief asks for standard WhatsApp branding. */
+.jq-wa-pill,.jq-wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;background:#128C7E;color:#fff;font-family:var(--font-sans);font-weight:800;font-size:.9375rem;line-height:1;white-space:nowrap;box-shadow:0 0 0 3px var(--merlot);text-decoration:none}
+.jq-wa-pill:hover,.jq-wa-btn:hover{background:#0E6F64}
+.jq-wa-pill:focus-visible,.jq-wa-btn:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.jq-wa-ico{width:20px;height:20px;flex:none;display:block}
+.jq-wa-long{display:none}
+@media (min-width:768px){.jq-wa-long{display:inline}.jq-wa-short{display:none}}
+@media (max-width:359px){.jq-wa-pill{padding:0 10px;gap:6px;font-size:.875rem}}
+.jq-wa-cta{gap:12px}
+.jq-wa-cta .jq-wa-ico{width:22px;height:22px;color:#25D366}
+
+/* 5B: mobile menu above everything in the HUD */
+.jq-menu{z-index:60}
+
+/* 14c + 14n: ONE progress bar. "The route" is a sub-segment of the XP bar; cells are 24px wide */
+.q2-cellbtn{width:24px}
+.jq-xp-k{font-size:16px;letter-spacing:.1em}
+.jq-xp-route{position:relative;display:flex;align-items:center;margin:0 4px;padding:0 2px}
+.jq-xp-route:before{content:"";position:absolute;left:0;right:0;bottom:5px;height:3px;background:var(--yellow);opacity:.45}
+.q2-xp.is-route .jq-xp-route:before{opacity:1}
+.jq-xp-route-k{position:absolute;left:50%;bottom:calc(100% + 4px);translate:-50% 0;white-space:nowrap;background:var(--merlot);color:var(--yellow);font:800 12px/1 var(--font-sans);text-transform:uppercase;letter-spacing:.08em;padding:4px 6px;pointer-events:none}
+/* phones: compact "XP n/9" counter instead of hiding progress */
+.jq-xp-count{position:fixed;left:calc(12px + env(safe-area-inset-left));bottom:calc(16px + env(safe-area-inset-bottom));z-index:50;display:none;align-items:center;gap:8px;min-height:44px;padding:0 12px;background:var(--merlot);color:var(--yellow);font-size:16px;letter-spacing:.08em;opacity:0;pointer-events:none;transition:opacity .2s steps(2,end)}
+.jq-xp-count-k{color:var(--coconut)}
+.jq-xp-count.is-on{opacity:1}
+@media (max-width:767px){.jq-xp-count{display:flex}}
+
+/* 5B: while a quest popup is open on small screens, get the fox dialogue + control bar out of the way;
+   the popup sits fully below the header and scrolls internally */
+@media (max-width:767px),(max-height:560px){
+  .jq-pop-open .q2-dialog-map,.jq-pop-open .q2-controls,.jq-pop-open .jq-xp-count,.jq-pop-open .q2-xp{visibility:hidden!important;opacity:0!important}
+  .q2-popup-wrap{top:calc(68px + env(safe-area-inset-top));bottom:calc(12px + env(safe-area-inset-bottom));left:12px;right:12px;width:auto;transform:none!important;pointer-events:none}
+  .q2-popup-wrap>*{pointer-events:auto}
+  .q2-popup-wrap .q2-popup{max-height:100%;overflow-y:auto;overscroll-behavior:contain}
+}
+@media (max-height:560px) and (min-width:768px){.q2-popup-wrap{left:auto;width:min(400px,100% - 24px)}}
+
+/* 14o: hide the previous vignette/popup the moment walking starts */
+.jq-walking .q2-vig-wrap,.jq-walking .q2-popup-wrap{visibility:hidden!important}
+
+/* 14g: landscape phones, title screen: no control bar under the menu (PRESS START is right there) */
+@media (max-height:560px),(max-width:767px) and (max-height:740px){.jq-at-title .q2-controls,.jq-at-title .jq-xp-count{visibility:hidden}}
+
+/* 14B: official SVG wordmark */
+.jq-logo-img{display:block;max-width:100%;height:auto}
+.jq-logo-title{width:auto;margin-top:24px;height:clamp(44px,8vw,96px)}
+@media (max-height:820px){.jq-logo-title{margin-top:12px;height:clamp(44px,6.5vw,72px)}}
+@media (max-height:560px){.jq-logo-title{height:40px}}
+.jq-logo-credits{width:auto;height:56px}
+
+/* 14f: title subline, PRESS START blink stops, How to play rows */
+.jq-subline{margin-top:10px;max-width:42ch;font-size:1rem;font-weight:600;line-height:1.4;color:var(--coconut-78)}
+.q2-start.is-still{animation:none}
+.q2-how.jq-how{font-family:var(--font-sans);text-transform:none;letter-spacing:0;color:var(--coconut);text-align:left;width:min(360px,calc(100vw - 24px))}
+.jq-how ul{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.jq-how li{display:flex;align-items:flex-start;gap:12px;font-size:1rem;font-weight:700;line-height:1.35}
+.jq-how-ico{flex:none;display:grid;place-items:center;width:32px;height:32px;background:var(--yellow);color:var(--merlot)}
+.jq-how-ico.is-bang{font-family:var(--font-px);font-size:18px;-webkit-font-smoothing:none}
+.jq-how-key{display:block;margin-top:2px;font-size:.9375rem;font-weight:600;color:var(--coconut-78)}
+@media (max-height:560px){.q2-how.jq-how{bottom:auto;top:64px}}
+
+/* 17: CJC regular badge on the second fox */
+.jq-badge{position:absolute;right:-8px;bottom:-6px;width:24px;height:auto;display:block}
+
+/* 14h: One more song */
+.jq-song{touch-action:manipulation}
+.jq-song[aria-disabled=true]{background:var(--merlot-700);color:var(--coconut-78);cursor:default}
+
+/* 10: Stop 5, the unlock line */
+.jq-unlock{margin-top:16px;max-width:42ch;font-size:1.125rem;font-weight:700;line-height:1.4;color:var(--merlot)}
+.jq-unlock-k{margin-top:14px;display:inline-block;padding:6px 10px;background:var(--yellow);color:var(--merlot)}
+
+/* 11A: save point */
+.jq-kicker{font-family:var(--font-px);-webkit-font-smoothing:none;text-transform:uppercase;font-size:16px;letter-spacing:.12em}
+.jq-save-sub{margin-top:14px;max-width:40ch;font-size:1.0625rem;font-weight:600;line-height:1.45}
+
+/* 18 + 14d: credits team row and end-of-game buttons */
+.jq-team{margin:16px auto 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:780px}
+.jq-team li{display:flex;flex-direction:column;align-items:center;gap:6px;width:140px}
+.jq-plate{display:block;width:140px;height:auto;aspect-ratio:16/10;object-fit:contain}
+.jq-plate-role{font-size:.9375rem;font-weight:700;color:var(--coconut-78)}
+.jq-endnav{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px}
+.q2-credits .jq-endnav .btn{padding:9px 18px;min-height:44px}
+.q2-credits .jq-endnav .jq-wa-btn{box-shadow:none}
+@media (max-width:767px),(max-height:760px){
+  .q2-credits{height:auto}
+  .q2-credits-view{height:auto;position:static;padding:96px 0 120px}
+  .q2-credits-view>div{transform:none!important}
+}
+/* 5B: signpost name tags only while walking the route, so they never sit clipped under the header later */
+html:not(.jq-on-route) .q2-bigsign-label{opacity:0!important}
+
+/* 14f/14g: short phones, keep the title menu clear of the control bar */
+@media (max-width:767px) and (max-height:740px){.q2-title-fox{width:116px}.q2-title .q2-start{margin-top:12px}.q2-title .q2-menu{margin-top:6px}.jq-logo-title{margin-top:8px}}
+
+/* 5B: the Go/Back fast-travel tags are pointer helpers (tabindex -1); on phones they clip at the edges and crowd the controls, so Next/Back carry navigation there */
+@media (max-width:767px){.q2-go{display:none}}
+
+/* 14f: on portrait phones the How to play rows open in the flow under the menu (no overlay over the title) */
+@media (max-width:639px) and (min-height:561px){.q2-how.jq-how{position:relative;left:auto;bottom:auto;translate:none;margin:8px 0 4px;width:min(320px,calc(100vw - 40px));padding:12px}}
+@media (max-height:560px){.q2-how.jq-how{z-index:55;box-shadow:0 0 0 3px var(--yellow)}}
+
+/* 14g: landscape phones (max-height 560px): the whole title screen, menu row included, fits above the fold */
+@media (max-height:560px){.q2-title{padding-top:60px;padding-bottom:16px}.q2-title .q2-title-fox{width:56px}.q2-title .jq-logo-title{margin-top:4px;height:40px}.q2-title h1{margin-top:6px}.q2-title h1+p{margin-top:4px}.q2-title .jq-subline{margin-top:2px;font-size:.9375rem}.q2-title .q2-start{margin-top:4px}.q2-title .q2-menu{margin-top:0}}
+
+/* ==========================================================================
+   OPTION B (cairo-jazz-quest-b): quest restructure. Every pitch beat is a game moment.
+   ========================================================================== */
+.jq-ico{display:block;width:100%;height:100%}
+.jq-ico svg{display:block}
+
+/* Title: NEW QUEST card + 3-item menu */
+.jq-title-a,.jq-title-b{display:flex;flex-direction:column;align-items:center;max-width:100%}
+.jq-title-hook{display:flex;align-items:center;justify-content:center;gap:18px;max-width:100%}
+.jq-title .q2-title-fox{flex:none;width:150px}
+@media (min-width:640px){.jq-title .q2-title-fox{width:180px}}
+.jq-bubble{position:relative;max-width:min(30ch,100%);text-align:left;background:var(--coconut);color:var(--merlot);padding:12px 14px;font-weight:700;font-size:1rem;line-height:1.35;box-shadow:0 0 0 3px var(--yellow)}
+.jq-bubble:before{content:"";position:absolute;left:-15px;top:50%;margin-top:-6px;width:12px;height:12px;background:var(--yellow);clip-path:polygon(0 50%,100% 0,100% 100%)}
+.jq-bubble-k{display:block;margin-bottom:4px;font-size:16px;letter-spacing:.12em;color:var(--body)}
+.jq-title .jq-logo-title{margin-top:18px}
+.jq-newq{width:min(400px,100%);margin-top:22px;--frame-w:4px}
+.jq-newq>.px-frame-in{padding:12px 16px 14px;text-align:left;color:var(--merlot)}
+.jq-newq-k{display:flex;align-items:center;gap:10px;font-size:16px;letter-spacing:.12em}
+.jq-newq-bang{display:grid;place-items:center;flex:none;width:22px;height:24px;background:var(--yellow);outline:2px solid var(--merlot)}
+.jq-newq-rows{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:4px}
+.jq-newq-title{font-size:1.3125rem;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.jq-newq-rows li:not(.jq-newq-title){display:flex;gap:10px;align-items:baseline;font-weight:700;font-size:1rem;line-height:1.3}
+.jq-newq-l{flex:none;min-width:5.6ch;font-size:16px;letter-spacing:.1em;color:var(--body)}
+.jq-title .jq-title-menu{margin-top:14px}
+@media (max-width:767px){
+  .jq-title{padding-top:76px}
+  .jq-title .q2-title-fox{width:84px}
+  .jq-title-hook{gap:14px}
+  .jq-bubble{max-width:230px;padding:10px 12px}
+  .jq-title .jq-logo-title{margin-top:14px;height:34px}
+  .jq-title h1{margin-top:8px;font-size:1.75rem}
+  .jq-newq{margin-top:14px}
+  .jq-title .jq-title-menu{margin-top:8px}
+}
+@media (max-width:359px){.jq-bubble{font-size:.9375rem;max-width:200px}.jq-title .q2-title-fox{width:70px}}
+/* landscape phones: two columns so the card and menu sit above the fold */
+@media (max-height:560px) and (min-width:600px){
+  .jq-title{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;column-gap:28px;padding:64px 24px 16px}
+  .jq-title .q2-title-fox{width:64px}
+  .jq-bubble{font-size:.9375rem;max-width:260px;padding:8px 10px}
+  .jq-title .jq-logo-title{margin-top:10px;height:30px}
+  .jq-title h1{margin-top:4px;font-size:1.5rem}
+  .jq-newq{margin-top:0}
+  .jq-newq>.px-frame-in{padding:8px 12px 10px}
+  .jq-newq-title{font-size:1.125rem}
+  .jq-title .jq-title-menu{margin-top:4px}
+  .jq-title .jq-title-menu button{min-height:40px}
+}
+
+/* HUD: Quest log button (icon on small phones, "Log", then "Quest log") */
+.jq-log-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;height:44px;padding:0 12px;color:var(--yellow)}
+.jq-log-btn:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.jq-log-ico{width:22px;height:22px;flex:none}
+.jq-log-long,.jq-log-short{font-size:16px;letter-spacing:.1em;white-space:nowrap}
+.jq-log-long{display:none}
+@media (min-width:768px){.jq-log-long{display:inline}.jq-log-short{display:none}}
+@media (max-width:419px){.jq-log-short{display:none}.jq-log-btn{padding:0 10px}}
+
+/* HUD: BAG n/7 next to the XP bar; the phone counter shows XP over BAG */
+.jq-bagc{display:flex;align-items:center;gap:6px;margin-left:4px;padding-left:10px;border-left:3px solid rgba(249,245,233,.25);color:var(--yellow);font-size:16px;letter-spacing:.08em;white-space:nowrap}
+.jq-bagc-k{color:var(--coconut)}
+@media (max-width:767px){.jq-xp-count{display:grid;grid-template-columns:auto auto;column-gap:8px;row-gap:2px;align-items:center;padding:4px 10px;line-height:1.1}}
+
+/* Map: the "!" marker is now a chest; "+1 LOOT" pop */
+.q2-marker>span.jq-chest{width:44px;height:42px;padding:4px 4px 2px;background:var(--yellow);outline:3px solid var(--merlot);display:block}
+.q2-marker.is-open>span.jq-chest{background:var(--coconut)}
+.jq-loot-pop{background:var(--yellow);color:var(--merlot);outline:3px solid var(--merlot);z-index:2}
+
+/* Stop 1: One more song meters */
+.jq-why-grid{display:grid;gap:16px;margin-top:14px}
+@media (min-width:768px){.jq-why-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:start;gap:24px}}
+.jq-why-grid .jq-scene{margin-top:0}
+.jq-scene.is-full{box-shadow:0 0 0 3px var(--yellow)}
+.jq-say{display:flex;align-items:flex-start;gap:10px}
+.jq-say-fox{flex:none;width:46px;padding:3px;background:var(--blue)}
+.jq-say p{font-size:1rem;font-weight:700;line-height:1.35;color:var(--merlot)}
+.jq-meters{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px}
+.jq-meter-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.jq-meter-k{font-size:.9375rem;font-weight:800;color:var(--merlot);line-height:1.2}
+.jq-meter-st{flex:none;font-family:var(--font-sans);font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--body)}
+.jq-meter.is-full .jq-meter-st{color:var(--merlot);background:var(--yellow);padding:2px 6px}
+.jq-meter-bar{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:2px;height:16px;margin-top:4px;padding:3px;background:var(--merlot)}
+.jq-meter-seg{background:rgba(249,245,233,.16);transition:background-color 0s linear}
+.jq-meter.is-full .jq-meter-seg{background:var(--yellow);transition-delay:var(--d)}
+.jq-why .jq-song{margin-top:14px}
+.jq-payoff-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
+.jq-payoff-row.is-on{margin-top:6px}
+.jq-payoff-row .jq-payoff{font-size:1.125rem;font-weight:800}
+@media (max-width:767px){.jq-why-room{max-width:280px;width:100%;margin:0 auto}.jq-why .jq-small{display:none}}
+@media (prefers-reduced-motion:reduce){.jq-meter.is-full .jq-meter-seg{transition-delay:0s}}
+
+/* Stop 2: loot window + bag */
+@media (min-width:768px) and (min-height:561px){.q2-popup-wrap.jq-loot-wrap{width:min(420px,100% - 32px)}}
+.jq-loot-win .jq-bag-head{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding:6px 10px;background:var(--merlot);color:var(--yellow);font-size:16px;letter-spacing:.1em}
+.jq-loot{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px}
+.jq-loot-row{display:grid;grid-template-columns:40px minmax(0,1fr);align-items:center;gap:10px;padding:4px;border:2px dashed rgba(104,27,43,.28)}
+.jq-loot-row.has{border:2px solid var(--merlot);background:#fffdf6;animation:jq-loot-in .36s steps(4) both}
+.jq-loot-slot{display:block;width:40px;height:40px;padding:5px;background:var(--coconut);border:2px solid var(--merlot)}
+.jq-loot-row:not(.has) .jq-loot-slot{border-color:rgba(104,27,43,.3);display:grid;place-items:center}
+.jq-loot-q{font-family:var(--font-px);font-size:18px;color:rgba(104,27,43,.4);-webkit-font-smoothing:none}
+.jq-loot-wait{font-family:var(--font-px);letter-spacing:.2em;color:rgba(104,27,43,.35);-webkit-font-smoothing:none}
+.jq-loot-row.has.r-legendary .jq-loot-slot{background:var(--yellow)}
+.jq-loot-row.has.r-epic .jq-loot-slot{background:var(--blue)}
+.jq-loot-row.is-fresh .jq-loot-slot{box-shadow:0 0 0 3px var(--yellow)}
+.jq-loot-txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.jq-loot-name{font-size:.9375rem;font-weight:800;line-height:1.2;color:var(--merlot)}
+.jq-loot-meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
+.jq-rar{flex:none;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:1px 6px;background:var(--coconut);color:var(--merlot);border:2px solid var(--merlot)}
+.r-legendary .jq-rar{background:var(--yellow)}
+.r-epic .jq-rar{background:var(--blue)}
+.r-quest .jq-rar{background:var(--merlot);color:var(--yellow)}
+.jq-loot-sub{font-size:.9375rem;font-weight:600;line-height:1.3;color:var(--body)}
+.jq-loot.is-compact{gap:4px}
+.jq-loot.is-compact .jq-loot-row{grid-template-columns:30px minmax(0,1fr);gap:8px;padding:2px;border:0;background:transparent;animation:none}
+.jq-loot.is-compact .jq-loot-slot{width:30px;height:30px;padding:3px}
+.jq-walk-on,.jq-trade-ok{display:flex;align-items:center;justify-content:center;width:100%;min-height:50px;margin-top:12px;padding:10px 18px;background:var(--merlot);color:var(--yellow);font-size:16px;letter-spacing:.12em;border:0;cursor:pointer}
+.jq-walk-on:focus-visible,.jq-trade-ok:focus-visible{outline:3px solid var(--merlot);outline-offset:3px}
+@keyframes jq-loot-in{from{transform:translateY(-14px);opacity:0}60%{opacity:1}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.jq-loot-row.has{animation:none}}
+@media (max-width:767px){.jq-loot-sub{font-size:1rem}}
+
+/* Stop 3: save files on the four posts */
+.jq-file-head{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:16px;letter-spacing:.1em;color:var(--body)}
+.jq-file-st{padding:2px 8px;background:var(--yellow);color:var(--merlot)}
+.jq-file.is-empty .jq-file-st{background:var(--coconut);outline:2px dashed var(--merlot);outline-offset:-2px}
+.jq-file .q2-vignette-title{margin-top:6px}
+.jq-file-row{display:flex;align-items:flex-start;gap:12px;margin-top:10px}
+.jq-file-ico{flex:none;width:48px;height:48px;padding:6px;background:var(--yellow);border:3px solid var(--merlot)}
+.jq-file-row .jq-card-d{margin-top:0}
+.jq-party{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.jq-plate-sm{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:contain}
+.jq-empty{display:flex;align-items:center;gap:14px;margin-top:12px;padding:14px;border:3px dashed var(--merlot);color:var(--merlot);font-weight:800;font-size:1.0625rem}
+.jq-empty-plus{display:grid;place-items:center;flex:none;width:40px;height:40px;background:var(--yellow);font-size:24px}
+
+/* Stop 4: trade window */
+.jq-trade{display:grid;gap:12px;margin-top:14px}
+@media (min-width:768px){.jq-trade{grid-template-columns:minmax(0,1.15fr) auto minmax(0,1fr);align-items:center;gap:18px}}
+.jq-trade-side{padding:12px;border:3px solid var(--merlot);background:#fffdf6}
+.jq-trade-h{margin-bottom:8px;font-size:16px;letter-spacing:.1em;color:var(--merlot)}
+.jq-trade-mid{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:4px}
+.jq-coins-k{font-size:16px;letter-spacing:.12em;color:var(--body)}
+.jq-coins{display:flex;align-items:center;gap:10px;font-family:var(--font-px);font-size:32px;line-height:1;color:var(--merlot);-webkit-font-smoothing:none}
+.jq-swap{font-family:var(--font-sans);font-weight:800;font-size:26px}
+.jq-free-line{max-width:16ch;font-size:1rem;font-weight:800;line-height:1.3;color:var(--merlot)}
+.jq-needs{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.jq-needs li{display:flex;align-items:flex-start;gap:10px}
+.jq-box{flex:none;width:26px;height:26px;padding:2px;background:var(--yellow);border:3px solid var(--merlot)}
+.jq-needs strong,.jq-obj strong{display:block;font-size:.9375rem;font-weight:800;line-height:1.25;color:var(--merlot)}
+.jq-need-d,.jq-obj-d{display:block;font-size:.9375rem;font-weight:600;line-height:1.3;color:var(--body)}
+.jq-trade-ok{width:auto;margin:16px auto 0;padding:10px 28px}
+@media (max-width:767px){
+  .jq-trade{gap:8px}
+  .jq-trade-side{padding:8px 10px}
+  .jq-loot.is-compact{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 8px}
+  .jq-loot.is-compact .jq-loot-row{grid-template-columns:24px minmax(0,1fr);gap:6px}
+  .jq-loot.is-compact .jq-loot-slot{width:24px;height:24px;padding:2px;border-width:1px}
+  .jq-loot.is-compact .jq-loot-name{font-size:.875rem}
+  .jq-trade-mid{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:4px 10px}
+  .jq-coins{font-size:24px}.jq-swap{font-size:20px}
+  .jq-free-line{max-width:none;flex-basis:100%}
+  .jq-needs{gap:6px}
+  .jq-trade-ok{width:100%;margin-top:12px}
+}
+
+/* Stop 5: locked chest */
+.jq-locked{display:flex;align-items:center;gap:20px}
+.jq-locked-chest{position:relative;flex:none;width:88px;height:88px;padding:6px;background:var(--yellow);border:3px solid var(--merlot)}
+.jq-locked-lock{position:absolute;right:-12px;bottom:-12px;width:40px;height:40px;padding:4px;background:var(--coconut);border:3px solid var(--merlot)}
+.jq-h-lock{flex:none;width:.9em;height:.9em}
+@media (max-width:479px){.jq-locked{flex-direction:column;align-items:flex-start;gap:16px}.jq-locked-chest{width:64px;height:64px}}
+
+/* Final quest card (save point) */
+.jq-final{margin-top:28px;--frame-w:4px}
+.jq-final>.px-frame-in{display:grid;gap:24px;padding:22px 18px}
+@media (min-width:768px){.jq-final>.px-frame-in{padding:32px 34px}}
+@media (min-width:1024px){.jq-final>.px-frame-in{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:end;gap:40px}}
+.jq-final-h{margin-top:8px;font-size:clamp(1.9rem,4vw,3.4rem);font-weight:800;line-height:1.05;letter-spacing:-.035em}
+.jq-reward{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:14px}
+.jq-reward-k{padding:4px 8px;background:var(--merlot);color:var(--yellow);font-size:16px;letter-spacing:.1em}
+.jq-reward span:last-child{font-size:1.25rem;font-weight:800}
+.jq-accept{min-height:56px;font-size:1.125rem}
+.jq-final .jq-lines,.jq-log-foot .jq-lines{flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:6px}
+.jq-or{font-weight:600}
+
+/* Quest log dialog (speedrun) */
+.jq-log{position:fixed;inset:0;z-index:70;display:flex;justify-content:center;align-items:flex-start;padding:max(12px,env(safe-area-inset-top)) 12px 12px;background:rgba(36,27,31,.62)}
+.jq-log-panel{width:min(860px,100%);--frame-w:4px}
+.jq-log-in{max-height:calc(100dvh - 40px);overflow-y:auto;overscroll-behavior:contain;padding:16px 18px 20px;color:var(--merlot)}
+@media (min-width:768px){.jq-log-in{padding:22px 28px 26px}}
+.jq-log-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.jq-log-h{margin-top:4px;font-size:clamp(1.375rem,2.6vw,1.875rem);font-weight:800;line-height:1.1;letter-spacing:-.025em}
+.jq-log-close:focus-visible{outline:3px solid var(--merlot);outline-offset:2px}
+.jq-log-sec{margin-top:16px}
+.jq-log-k{display:inline-block;margin-bottom:8px;padding:2px 8px;background:var(--yellow);font-size:16px;letter-spacing:.1em}
+.jq-obj{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+@media (min-width:768px){.jq-obj{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 22px}}
+.jq-obj li{display:flex;align-items:flex-start;gap:10px}
+.jq-log-cols{display:grid;gap:0 24px}
+@media (min-width:768px){.jq-log-cols{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}}
+.jq-log-free{margin-top:10px;font-weight:800;font-size:1rem}
+.jq-log-jan{display:flex;align-items:flex-start;gap:10px;font-weight:700;font-size:.9375rem;line-height:1.35}
+.jq-log-lock-ico{flex:none;width:28px;height:28px;padding:2px;background:var(--yellow);border:2px solid var(--merlot)}
+.jq-log-foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:20px;padding-top:16px;border-top:3px solid var(--merlot)}
+@media (max-width:767px){.jq-log-jan,.jq-obj-d,.jq-need-d{font-size:1rem}.jq-log-foot .jq-accept{width:100%}}
+
+/* OPTION B: with the loot window open the fox line steps aside on every size; on desktop the window is two columns and fits below the header */
+.jq-pop-open .q2-dialog-map{visibility:hidden!important;opacity:0!important}
+@media (min-width:768px) and (min-height:561px){
+  .q2-popup-wrap.jq-loot-wrap{width:min(620px,100% - 32px)}
+  .jq-loot-wrap .q2-popup{max-height:calc(100svh - 184px);overflow-y:auto;overscroll-behavior:contain}
+  .jq-loot-win .jq-loot{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .jq-loot-win .jq-walk-on{width:auto;margin-left:auto;padding:10px 28px}
+}
+@media (min-width:768px){.jq-log-loot .jq-loot{grid-template-columns:repeat(2,minmax(0,1fr))}.jq-log-cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+
+/* OPTION B: phone fit. Title fits 320x568; game windows stay large enough to read (scale ~0.9, not ~0.6). */
+.jq-newq-for{margin-left:auto;font-family:var(--font-sans);text-transform:none;letter-spacing:0;font-weight:700;font-size:.9375rem;color:var(--body)}
+.jq-accept-sub{margin-top:0;font-size:1rem}
+@media (max-width:767px){
+  .jq-title{padding-top:68px;padding-bottom:16px}
+  .jq-title .q2-title-fox{width:64px}
+  .jq-bubble{max-width:236px;font-size:.9375rem;line-height:1.3;padding:8px 10px}
+  .jq-bubble-k{display:none}
+  .jq-title .jq-logo-title{margin-top:12px;height:28px}
+  .jq-title h1{margin-top:6px;font-size:1.5rem}
+  .jq-newq{margin-top:10px}
+  .jq-newq>.px-frame-in{padding:8px 12px 10px}
+  .jq-newq-rows{margin-top:4px;gap:2px}
+  .jq-newq-title{font-size:1.125rem}
+  .jq-title .jq-title-menu{margin-top:4px;gap:0}
+  .q2-overlay .q2-window>.px-frame-in{padding:14px}
+  .q2-overlay .q2-window>.px-frame-in>p.font-px:first-child{display:none}
+  .q2-overlay .q2-window h2{margin-top:0}
+  .jq-why-grid{gap:10px;margin-top:8px}
+  .jq-why-room{max-width:220px}
+  .jq-why .jq-count{display:none}
+  .jq-say-fox{width:36px;padding:2px}
+  .jq-meters{gap:6px;margin-top:8px}
+  .jq-meter-bar{height:12px;padding:2px;margin-top:2px}
+  .jq-why .jq-song{margin-top:10px;min-height:48px;padding:10px 14px}
+  .jq-trade{margin-top:8px}
+  .jq-trade-h{margin-bottom:4px}
+  .jq-needs{gap:4px}
+  #launch{padding-top:84px}
+  #launch .t-px2{font-size:max(16px,var(--pxu))}
+  .jq-final{margin-top:18px}
+  .jq-final>.px-frame-in{gap:18px}
+}
+@media (max-width:359px){.jq-bubble{max-width:216px}}
+@media (max-width:767px){
+  .jq-why-room{max-width:180px}
+  .jq-why .jq-song{font-size:18px;letter-spacing:.1em}
+  /* trade window on phones: "You receive" is the 7-slot bag grid; names stay in the DOM for screen readers */
+  .q2-overlay .jq-loot.is-compact{grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+  .q2-overlay .jq-loot.is-compact .jq-loot-row{display:block;padding:0}
+  .q2-overlay .jq-loot.is-compact .jq-loot-slot{width:100%;height:auto;aspect-ratio:1;max-width:36px;padding:3px;border-width:2px}
+  .q2-overlay .jq-loot.is-compact .jq-loot-txt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+  .jq-trade-mid{gap:2px 10px;padding:0}
+  .jq-free-line{font-size:.9375rem}
+}
+/* OPTION B: landscape phones (max-height 560px): same compaction as phones so the windows read at ~0.8 scale, not ~0.5 */
+@media (max-height:560px){
+  .jq-title .jq-title-menu{flex-direction:column;align-items:flex-start}
+  .q2-overlay .q2-window>.px-frame-in{padding:12px 16px}
+  .q2-overlay .q2-window>.px-frame-in>p.font-px:first-child{display:none}
+  .q2-overlay .q2-window h2{margin-top:0;font-size:1.375rem}
+  .jq-why-grid{margin-top:8px;gap:16px}
+  .jq-why .jq-count,.jq-why .jq-small{display:none}
+  .jq-why-room{max-width:240px}
+  .jq-say-fox{width:34px;padding:2px}
+  .jq-say p{font-size:.9375rem}
+  .jq-meters{gap:4px;margin-top:6px}
+  .jq-meter-bar{height:12px;padding:2px;margin-top:2px}
+  .jq-why .jq-song{margin-top:8px;min-height:44px;padding:8px 12px;font-size:18px}
+  .q2-overlay .jq-loot.is-compact{grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+  .q2-overlay .jq-loot.is-compact .jq-loot-row{display:block;padding:0}
+  .q2-overlay .jq-loot.is-compact .jq-loot-slot{width:100%;height:auto;aspect-ratio:1;max-width:36px;padding:3px;border-width:2px}
+  .q2-overlay .jq-loot.is-compact .jq-loot-txt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+  .jq-trade{margin-top:8px;gap:12px}
+  .jq-trade-side{padding:8px 10px}
+  .jq-needs{gap:4px}
+  .jq-trade-ok{margin-top:10px;min-height:44px}
+  .jq-locked-chest{width:64px;height:64px}
+}
+/* ===== OPTION C: CJC character sheet, achievements, toast, Radwa NPC, celebration ===== */
+.jq-cjc-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;height:44px;padding:0 12px;color:var(--yellow)}
+.jq-cjc-btn:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.jq-cjc-svg{display:block;width:20px;height:22px;flex:none}
+.jq-cjc-k{font-size:16px;letter-spacing:.1em;white-space:nowrap}
+@media (max-width:519px){.jq-cjc-k{display:none}.jq-cjc-btn{padding:0 10px}.jq-log-short{display:none}.jq-log-btn{padding:0 10px}}
+.jq-cjc-dot{display:none;position:absolute;top:-5px;right:-5px;width:11px;height:11px;background:var(--yellow);outline:2px solid var(--merlot)}
+.jq-cjc-btn.has-new .jq-cjc-dot{display:block}
+.jq-lv-pop{position:absolute;left:50%;top:calc(100% + 6px);translate:-50% 0;padding:3px 6px 2px;background:var(--yellow);color:var(--merlot);outline:2px solid var(--merlot);font-size:14px;line-height:1;pointer-events:none;animation:jq-lvpop 1s steps(6) forwards}
+@keyframes jq-lvpop{0%{transform:translateY(-6px);opacity:1}70%{opacity:1}100%{transform:translateY(16px);opacity:0}}
+@media (max-width:419px){.jq-wa-pill{width:44px;padding:0}.jq-wa-pill .jq-wa-short{display:none}}
+/* sheet */
+.jq-sheet{position:fixed;inset:0;z-index:70;display:flex;justify-content:center;align-items:flex-start;padding:max(12px,env(safe-area-inset-top)) 12px 12px;background:rgba(36,27,31,.62)}
+.jq-sheet-panel{width:min(760px,100%)}
+.jq-sheet-id{display:flex;align-items:center;gap:14px;min-width:0}
+.jq-sheet-port{flex:none;display:block;width:64px;height:64px;padding:4px;background:var(--yellow);outline:3px solid var(--merlot)}
+.jq-sheet-class{margin-top:4px;font-weight:700;font-size:1rem}
+@media (max-width:399px){.jq-sheet-port{width:48px;height:48px}}
+.jq-stats{display:grid;gap:12px}
+.jq-stat{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:6px 12px;font-weight:800;font-size:1.0625rem}
+.jq-pips{display:flex;gap:5px}
+.jq-pip{position:relative;width:20px;height:14px;background:var(--coconut);outline:2px solid var(--merlot)}
+.jq-pip.is-on{background:var(--merlot)}
+.jq-pip.is-new{animation:jq-pipfill .6s steps(3) var(--d,0ms) both}
+@keyframes jq-pipfill{0%{background:var(--coconut)}50%{background:var(--yellow)}100%{background:var(--merlot)}}
+.jq-pip-up{position:absolute;left:50%;bottom:calc(100% + 4px);translate:-50% 0;padding:2px 3px 1px;background:var(--yellow);color:var(--merlot);outline:2px solid var(--merlot);font-size:11px;line-height:1;pointer-events:none;opacity:0;animation:jq-pipup 1.6s steps(8) var(--d,0ms) forwards}
+@keyframes jq-pipup{0%{opacity:1;transform:translateY(6px)}75%{opacity:1}100%{opacity:0;transform:translateY(-8px)}}
+.jq-stat-lv{min-width:3.4em;text-align:right;font-size:14px;letter-spacing:.08em}
+@media (max-width:479px){.jq-stat{grid-template-columns:minmax(0,1fr) auto}.jq-stat-k{grid-column:1/-1}.jq-pip{width:18px}}
+.jq-sheet-note{margin-top:10px;display:block!important}
+.jq-equip{display:flex;align-items:center;gap:12px;padding:10px 12px;border:3px dashed var(--merlot)}
+.jq-equip.is-on{border-style:solid;background:var(--yellow)}
+.jq-equip-slot{flex:none;display:grid;place-items:center;width:44px;height:44px;padding:5px;background:var(--coconut);outline:2px solid var(--merlot)}
+.jq-equip-t{display:flex;flex-direction:column;gap:2px;font-size:1rem;font-weight:600;line-height:1.3}
+.jq-equip-t strong{font-size:1.0625rem;font-weight:800}
+/* achievements list (sheet + quest log) */
+.jq-achs-n{margin-bottom:8px;font-size:14px;letter-spacing:.08em}
+.jq-achs{display:grid;gap:8px}
+@media (min-width:600px){.jq-achs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:768px){.jq-achs-w.is-compact .jq-achs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.jq-ach{display:flex;align-items:center;gap:10px;padding:6px 8px;outline:2px dashed rgba(104,27,43,.45)}
+.jq-ach.is-on{outline:2px solid var(--merlot);background:#FFF8D6}
+.jq-ach-b{flex:none;display:grid;place-items:center;width:40px;height:40px;padding:5px;background:var(--coconut);outline:2px dashed var(--merlot)}
+.jq-ach.is-on .jq-ach-b{background:var(--yellow);outline-style:solid}
+.jq-ach-q{font-size:16px;line-height:1}
+.jq-ach-t{display:flex;flex-direction:column;min-width:0;font-size:.9375rem;line-height:1.25}
+.jq-ach-t strong{font-size:1rem;font-weight:800}
+.jq-ach-d{font-weight:600}
+@media (max-width:767px){.jq-ach-t{font-size:1rem}}
+/* toast: a status, announced through the one live region (say), never focused */
+.jq-toast{position:fixed;z-index:80;top:calc(76px + env(safe-area-inset-top));right:calc(24px + env(safe-area-inset-right));pointer-events:none;animation:jq-toastin .3s steps(3) both}
+@media (max-width:767px){.jq-toast{left:12px;right:12px;top:calc(66px + env(safe-area-inset-top));display:flex;justify-content:center}}
+.jq-toast-in{display:flex;align-items:center;gap:12px;max-width:340px;padding:10px 16px 10px 10px;background:var(--yellow);color:var(--merlot);outline:3px solid var(--merlot);box-shadow:6px 6px 0 var(--merlot)}
+.jq-toast-b{flex:none;display:block;width:44px;height:44px;padding:5px;background:var(--coconut);outline:2px solid var(--merlot)}
+.jq-toast-t{display:flex;flex-direction:column;gap:3px;min-width:0}
+.jq-toast-k,.jq-toast-s{font-size:12px;letter-spacing:.08em;line-height:1.2}
+.jq-toast-t strong{font-size:1.125rem;font-weight:800;line-height:1.1}
+@keyframes jq-toastin{0%{transform:translateY(-14px);opacity:0}100%{transform:none;opacity:1}}
+/* "+1" next to a filled meter */
+.jq-meter-top{position:relative}
+.jq-meter-up{position:absolute;right:64px;top:-4px;padding:2px 4px 1px;background:var(--yellow);color:var(--merlot);outline:2px solid var(--merlot);font-size:11px;line-height:1;pointer-events:none;opacity:0;animation:jq-pipup 1.6s steps(8) forwards}
+/* Radwa NPC on the map */
+.jq-npc{position:absolute;z-index:4;display:block;padding:0;background:none;cursor:pointer;transform:translate(-50%,-100%)}
+.jq-npc-spr{display:block;width:36px;height:54px;filter:drop-shadow(2px 0 0 var(--merlot)) drop-shadow(-2px 0 0 var(--merlot)) drop-shadow(0 -2px 0 var(--merlot))}
+.jq-radwa{display:block;width:100%;height:100%}
+.jq-npc-tag{position:absolute;left:50%;top:calc(100% + 6px);translate:-50% 0;padding:4px 6px 3px;background:var(--blue);color:var(--merlot);outline:2px solid var(--merlot);font-size:12px;letter-spacing:.1em;line-height:1;white-space:nowrap}
+.jq-npc.is-near .jq-npc-tag{background:var(--yellow)}
+.jq-npc.is-near:not(.is-talking) .jq-npc-spr{animation:q2-hover .9s step-end infinite}
+.jq-npc:focus-visible{outline:3px solid var(--merlot);outline-offset:4px}
+.jq-npc:hover .jq-npc-tag,.jq-npc:focus-visible .jq-npc-tag{background:var(--yellow);translate:-50% -2px}
+@media (max-width:767px){.jq-npc-spr{width:28px;height:42px}}
+.jq-walking .jq-npc{pointer-events:none}
+/* celebration (Accept quest) */
+.jq-cele{position:fixed;inset:0;z-index:90;display:grid;place-items:center;pointer-events:none}
+.jq-cele-card{position:relative;z-index:1;padding:14px 22px;background:var(--yellow);color:var(--merlot);outline:4px solid var(--merlot);box-shadow:8px 8px 0 var(--merlot);text-align:center;animation:jq-celein .3s steps(4) both}
+.jq-cele-k{font-size:20px;letter-spacing:.1em}
+.jq-cele-t{margin-top:6px;font-size:1.25rem;font-weight:800}
+.jq-cele-px{position:absolute;left:50%;top:50%;width:10px;height:10px;background:var(--c);outline:2px solid var(--merlot);animation:jq-celepx .9s steps(8) var(--t) both}
+@keyframes jq-celein{0%{transform:scale(.7)}100%{transform:none}}
+@keyframes jq-celepx{0%{transform:translate(-50%,-50%);opacity:1}80%{opacity:1}100%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y)));opacity:0}}
+@media (prefers-reduced-motion:reduce){.jq-toast,.jq-pip.is-new,.jq-lv-pop,.jq-cele-card,.jq-npc-spr{animation:none!important}.jq-pip-up,.jq-meter-up{animation:none;opacity:1}.jq-lv-pop{display:none}}
+.jq-title .jq-title-menu.jq-has-save{display:grid;grid-template-columns:auto auto;column-gap:10px;align-items:center;justify-content:start}
+.jq-title .jq-title-menu.jq-has-save>li:nth-child(n+3){grid-column:1/-1}
+@media (max-width:767px){.jq-sheet-open .jq-toast,.jq-log-open .jq-toast{top:auto;bottom:calc(14px + env(safe-area-inset-bottom))}}
+@media (max-width:767px){.jq-toast-in{gap:10px;padding:6px 12px 6px 6px;box-shadow:4px 4px 0 var(--merlot)}.jq-toast-b{width:34px;height:34px;padding:4px}.jq-toast-s{display:none}.jq-toast-t strong{font-size:1rem}}
+
+/* ==========================================================================
+   POLISH PASS (title + HUD). One brand mention per view, no deal card on the title,
+   clear hierarchy: fox + bubble > lockup > "Made for Farah" > Start > secondary. 8px rhythm, 16px gutters.
+   ========================================================================== */
+
+/* Header: three 44px items on one line. The lockup (wordmark + "× Cairo Jazz Club") hides while a big wordmark is on screen */
+.jq-hud-brand{height:44px;padding:0 14px;gap:12px;transition:opacity .3s steps(3,end),visibility 0s}
+html:not(.jq-brand-on) .jq-hud-brand{opacity:0;visibility:hidden;transition:opacity .2s steps(2,end),visibility 0s .2s}
+.jq-hud-brand img{height:18px;width:auto}
+.jq-hud-x{display:none;font-family:var(--font-sans);font-weight:800;font-size:.9375rem;line-height:1;letter-spacing:-.01em;color:var(--yellow);white-space:nowrap}
+@media (min-width:1024px){.jq-hud-x{display:inline}}
+.jq-log-btn,.jq-wa-pill{height:44px;min-height:44px}
+@media (max-width:767px){
+  .q2-hud>div:first-child{padding:16px 16px 0;gap:8px}
+  .jq-hud-brand{padding:0 12px}
+  .jq-hud-brand img{height:16px}
+}
+@media (max-width:359px){.jq-hud-brand{padding:0 10px}.jq-hud-brand img{height:14px}}
+
+/* Title screen: the control bar steps away (the title has its own Start) */
+.q2-controls,.jq-xp-count{transition:opacity .2s steps(2,end),visibility 0s}
+.jq-at-title .q2-controls,.jq-at-title .jq-xp-count{visibility:hidden;opacity:0}
+
+/* Title layout */
+.jq-title.q2-title{justify-content:center;padding:96px 16px 32px;row-gap:0}
+.jq-title .jq-title-a{width:100%}
+.jq-title .jq-title-hook{gap:24px;align-items:center}
+.jq-title .q2-title-fox{width:152px}
+.jq-title .jq-bubble{max-width:min(32ch,100%);padding:14px 18px 16px;font-size:1.0625rem;line-height:1.4;box-shadow:0 0 0 3px var(--yellow)}
+.jq-title .jq-bubble:before{left:-17px;width:14px;height:16px;margin-top:-8px}
+.jq-title .jq-bubble-k{margin-bottom:6px}
+.jq-lockup{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:32px;max-width:100%}
+.jq-title .jq-lockup .jq-logo-title{margin:0;height:clamp(48px,5.6vw,80px);width:auto;max-width:100%}
+.jq-title .jq-lockup-h{display:flex;align-items:baseline;justify-content:center;gap:.4em;margin:0;font-family:var(--font-sans);font-size:clamp(1.25rem,2.1vw,1.875rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;color:var(--yellow)}
+.jq-lockup-x{font-weight:600;color:var(--coconut-78)}
+.jq-made{margin-top:16px;font-family:var(--font-px);-webkit-font-smoothing:none;text-transform:uppercase;font-size:16px;letter-spacing:.14em;color:var(--coconut-78)}
+.jq-title .jq-title-b{width:100%;margin-top:32px}
+.jq-title .jq-title-menu{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 8px;margin:0;padding:0;list-style:none}
+.jq-title .jq-title-menu>li:first-child{flex-basis:100%;display:flex;justify-content:center;margin-bottom:8px}
+/* primary: big yellow pixel button */
+.jq-start.btn{min-height:56px;padding:0 32px 0 28px;gap:14px;font-family:var(--font-px);font-weight:400;font-size:20px;letter-spacing:.14em;text-transform:uppercase;-webkit-font-smoothing:none;--step:4px;filter:drop-shadow(0 4px 0 var(--night))}
+.jq-start.btn:hover{--btn-bg:#fff09e}
+.jq-start.btn:active{transform:translateY(2px);filter:drop-shadow(0 2px 0 var(--night))}
+.jq-start.btn:focus-visible{outline:3px solid var(--coconut);outline-offset:6px}
+.jq-start .q2-cursor{opacity:1;background:var(--merlot);width:10px;height:16px}
+/* secondary: quiet pixel links, same 44px target */
+.jq-sec{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 14px;font-size:16px;letter-spacing:.12em;color:var(--coconut);text-transform:uppercase;-webkit-font-smoothing:none}
+.jq-sec:hover,.jq-sec:focus-visible{color:var(--yellow)}
+.jq-sec:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.jq-sec .q2-cursor{width:8px;height:14px}
+
+/* short desktops (720-820px tall) */
+@media (min-width:768px) and (max-height:820px){
+  .jq-title.q2-title{padding-top:88px;padding-bottom:24px}
+  .jq-title .q2-title-fox{width:128px}
+  .jq-lockup{margin-top:24px}
+  .jq-title .jq-lockup .jq-logo-title{height:clamp(48px,5vw,72px)}
+  .jq-title .jq-title-b{margin-top:24px}
+}
+
+/* roomy desktops (821px+ tall): scale the whole stack up one step */
+@media (min-width:1024px) and (min-height:821px){
+  .jq-title .q2-title-fox{width:176px}
+  .jq-title .jq-bubble{font-size:1.125rem}
+  .jq-title .jq-lockup .jq-logo-title{height:clamp(72px,5.6vw,96px)}
+  .jq-title .jq-lockup-h{font-size:2rem}
+  .jq-start.btn{min-height:64px;padding:0 40px 0 34px;font-size:22px}
+}
+
+/* phones (portrait) */
+@media (max-width:767px){
+  .jq-title.q2-title{padding:76px 16px 16px}
+  .jq-title .jq-title-hook{gap:16px}
+  .jq-title .q2-title-fox{width:72px}
+  .jq-title .jq-bubble{max-width:224px;padding:10px 12px;font-size:.9375rem;line-height:1.35}
+  .jq-title .jq-bubble:before{left:-15px;width:12px;height:12px;margin-top:-6px}
+  .jq-lockup{margin-top:24px;gap:4px}
+  .jq-title .jq-lockup .jq-logo-title{height:36px}
+  .jq-title .jq-lockup-h{font-size:1.25rem}
+  .jq-made{margin-top:12px}
+  .jq-title .jq-title-b{margin-top:24px}
+  .jq-start.btn{width:min(100%,288px);min-height:52px;font-size:18px;padding:0 20px}
+  .jq-sec{padding:0 10px}
+}
+@media (max-width:359px){
+  .jq-title .q2-title-fox{width:60px}
+  .jq-title .jq-title-hook{gap:14px}
+  .jq-title .jq-bubble{max-width:204px}
+  .jq-title .jq-lockup .jq-logo-title{height:32px}
+  .jq-title .jq-lockup-h{font-size:1.125rem}
+  .jq-sec{padding:0 8px;letter-spacing:.1em}
+}
+/* landscape phones: two columns, story left, menu right */
+@media (max-height:560px){
+  .jq-title.q2-title{padding:68px 24px 16px}
+  .jq-title .q2-title-fox{width:56px}
+  .jq-title .jq-bubble{max-width:240px;padding:8px 12px;font-size:.9375rem}
+  .jq-title .jq-bubble-k{display:none}
+  .jq-lockup{margin-top:16px;gap:4px}
+  .jq-title .jq-lockup .jq-logo-title{height:32px}
+  .jq-title .jq-lockup-h{font-size:1.125rem}
+  .jq-made{margin-top:8px}
+  .jq-title .jq-title-b{margin-top:0}
+  .jq-title .jq-title-menu{flex-direction:row}
+  .jq-title .jq-title-menu .jq-sec{min-height:44px}
+  .jq-start.btn{min-height:52px;font-size:18px}
+}
+@media (max-height:560px) and (min-width:600px){
+  .jq-title.q2-title{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);column-gap:32px;align-items:center}
+}
+
+/* 16px gutters on phones for the HUD, the controls and every window */
+@media (max-width:767px){
+  .q2-controls{right:calc(16px + env(safe-area-inset-right))}
+  .jq-xp-count{left:calc(16px + env(safe-area-inset-left))}
+  .q2-overlay{padding-left:16px;padding-right:16px}
+  .q2-vig-wrap{left:16px;right:16px}
+  .q2-dialog-map{width:calc(100% - 32px)}
+}
+@media (max-width:767px),(max-height:560px){.q2-popup-wrap{left:16px;right:16px}}
+@media (max-height:560px){.q2-controls{right:calc(16px + env(safe-area-inset-right))}}
+
+/* Sweep: passed signpost tags slid under the header on phones; the save-point card centres its two columns */
+@media (max-width:767px){.q2-bigsign-label{display:none}}
+@media (min-width:1024px){.jq-final>.px-frame-in{align-items:center}}
+
+@media (prefers-reduced-motion:reduce){.jq-hud-brand,.q2-controls,.jq-xp-count{transition:none}}
+
+/* POLISH: WhatsApp pill/button contrast. White on #128C7E was ~4.1:1 (fails AA at 15px); WhatsApp's dark green #075E54 is ~7.7:1.
+   Hover #0C7A6C stays at ~5.2:1. The green glyph on the merlot save-point CTA (.jq-wa-cta) is unchanged. */
+.jq-wa-pill,.jq-wa-btn{background:#075E54}
+.jq-wa-pill:hover,.jq-wa-btn:hover{background:#0C7A6C}
+
+/* POLISH (Option C): with a save, Continue is the big primary and New game joins the quiet secondary row */
+.jq-title .jq-title-menu.jq-has-save{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px}
+.jq-title .jq-title-menu.jq-has-save>li:nth-child(n+3){grid-column:auto}
+@media (max-width:767px){.jq-title .jq-title-menu.jq-has-save .jq-sec{padding:0 8px}}
